@@ -33,20 +33,6 @@ En el programa principal, crea instancias de diferentes tipos de empleados (al m
 
 rendimiento (1 al 3) 1 es bueno, 3 es malo. formula : cantProyectos / rendimiento + 10USD
 
-
-
-*/
-
-/*
-
-Crea una clase base llamada Empleado que tenga los siguientes atributos y métodos:
-
-Atributos: nombre, apellido, salario_base
-Métodos:
-calcular_salario(): Un método que calcule el salario total del empleado. El salario total se calcula sumando el salario base a las bonificaciones específicas de cada tipo de empleado.
-Crea tres clases derivadas: Desarrollador, Diseñador y Gerente. Cada una de estas clases debe heredar de la clase base Empleado. Define los siguientes atributos y métodos para cada clase:
-Calcular_salario(bonificacion) 
-
 */
 
 class Empleado {
@@ -72,29 +58,51 @@ class Desarrollador extends Empleado {
         this.lenguaje = lenguaje
         this.horasTrabajo = horasTrabajo
     }
+    calcularBonificacion():number{
+        return this.horasTrabajo*10
+    }
 }
 
-//const programador: Programador = new Programador('pepe', 20)
-const desarrollador : Desarrollador = new Desarrollador("Ezequiel", "Glikman", 280000, "JS", 40)
-console.log(desarrollador)
+class Disenador extends Empleado {
+    herramienta:string
+    proyectosFinalizados:number
+    constructor(nombre: string, apellido: string, salarioBase: number, herramienta:string, proyectosFinalizados:number){
+        super(nombre, apellido, salarioBase)
+        this.herramienta = herramienta
+        this.proyectosFinalizados = proyectosFinalizados
+    }
+    calcularBonificacion():number{
+        return this.proyectosFinalizados*12
+    }
+}
+
+class Gerente extends Empleado {
+    equipo:[]
+    proyectosGestionados:number
+    rendimiento:number
+    constructor(nombre: string, apellido: string, salarioBase: number, equipo:[], proyectosGestionados:number, rendimiento:number){
+        super(nombre, apellido, salarioBase)
+        this.equipo = []
+        this.proyectosGestionados = proyectosGestionados
+        this.rendimiento = rendimiento
+    }
+    calcular_bonificacion(){
+
+    }
+}
+
+const desarrollador1 : Desarrollador = new Desarrollador("Thomas", "Anderson", 100000, "JS", 40)
+const disenador1 : Disenador = new Disenador("Julieta", "Ulanovsky", 100000, "Figma", 10)
+
+//const gerente1 : Gerente = new Gerente ("Morpheus", "Nabucodonosor", 130000, 3, 2 )
+//{desarrollador1, disenador1}
+
+//console.log(desarrollador1.salarioBase + desarrollador1.calcularBonificacion())
+//console.log(desarrollador1)
+console.log(disenador1.salarioBase + disenador1.calcularBonificacion())
 
 
 /*
-
-Desarrollador:
-
-Atributos adicionales: lenguaje, horas_trabajo
-Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el desarrollador en función de las horas de trabajo. (10USD mas x 1hrs)
-
-Diseñador:
-Atributos adicionales: herramienta, proyectos_finalizados
-Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el diseñador en función de la cantidad de proyectos finalizados.
-
-(12USD x proyecto terminado)
-
-Gerente:
-
-Atributos adicionales: equipo, proyectos_gestionados, rendimiento:number
 Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el gerente en función del rendimiento del equipo y la cantidad de proyectos gestionados.
 En el programa principal, crea instancias de diferentes tipos de empleados (al menos uno de cada tipo). Establece los valores de sus atributos y muestra la información del empleado, incluido su salario total.
 

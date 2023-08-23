@@ -64,19 +64,29 @@ class Desarrollador extends Empleado {
         this.lenguaje = lenguaje;
         this.horasTrabajo = horasTrabajo;
     }
+    calcularBonificacion() {
+        return this.horasTrabajo * 10;
+    }
 }
-//const programador: Programador = new Programador('pepe', 20)
-const desarrollador = new Desarrollador("Ezequiel", "Glikman", 280000, "JS", 40);
-console.log(desarrollador);
+class Disenador extends Empleado {
+    constructor(nombre, apellido, salarioBase, herramienta, proyectosFinalizados) {
+        super(nombre, apellido, salarioBase);
+        this.herramienta = herramienta;
+        this.proyectosFinalizados = proyectosFinalizados;
+    }
+    calcularBonificacion() {
+        //const bonificacion:number = this.salarioBase*(1+(this.proyectosFinalizados/100))
+        //return Math.round((bonificacion + Number.EPSILON) * 100) / 100
+        return this.proyectosFinalizados * 12;
+    }
+}
+const desarrollador1 = new Desarrollador("Ezequiel", "Glikman", 100000, "JS", 40);
+const disenador1 = new Disenador("Ezequiel", "Glikman", 100000, "Figma", 10);
+//console.log(desarrollador1.salarioBase + desarrollador1.calcularBonificacion())
+//console.log(desarrollador1)
+console.log(disenador1.salarioBase + disenador1.calcularBonificacion());
 /*
 
-Desarrollador:
-
-Atributos adicionales: lenguaje, horas_trabajo
-Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el desarrollador en función de las horas de trabajo. (10USD mas x 1hrs)
-
-Diseñador:
-Atributos adicionales: herramienta, proyectos_finalizados
 Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el diseñador en función de la cantidad de proyectos finalizados.
 
 (12USD x proyecto terminado)
