@@ -18,8 +18,8 @@ Desarrollador:
 
 Atributos adicionales: lenguaje, horas_trabajo
 Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el desarrollador en función de las horas de trabajo. (10USD mas x 1hrs)
-Diseñador:
 
+Diseñador:
 Atributos adicionales: herramienta, proyectos_finalizados
 Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el diseñador en función de la cantidad de proyectos finalizados.
 
@@ -58,4 +58,46 @@ class Empleado {
         this.apellido = apellido
         this.salarioBase = salarioBase
     }
+    calcularSalario(bonificaciones : any){
+       // this.salarioBase + bonificaciones
+    }
 }
+
+class Desarrollador extends Empleado {
+    lenguaje:string
+    horasTrabajo:number
+
+    constructor(nombre: string, apellido: string, salarioBase: number, lenguaje: string, horasTrabajo:number) {
+        super(nombre, apellido, salarioBase)
+        this.lenguaje = lenguaje
+        this.horasTrabajo = horasTrabajo
+    }
+}
+
+//const programador: Programador = new Programador('pepe', 20)
+const desarrollador : Desarrollador = new Desarrollador("Ezequiel", "Glikman", 280000, "JS", 40)
+console.log(desarrollador)
+
+
+/*
+
+Desarrollador:
+
+Atributos adicionales: lenguaje, horas_trabajo
+Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el desarrollador en función de las horas de trabajo. (10USD mas x 1hrs)
+
+Diseñador:
+Atributos adicionales: herramienta, proyectos_finalizados
+Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el diseñador en función de la cantidad de proyectos finalizados.
+
+(12USD x proyecto terminado)
+
+Gerente:
+
+Atributos adicionales: equipo, proyectos_gestionados, rendimiento:number
+Método adicional: calcular_bonificacion(): Un método que calcula la bonificación para el gerente en función del rendimiento del equipo y la cantidad de proyectos gestionados.
+En el programa principal, crea instancias de diferentes tipos de empleados (al menos uno de cada tipo). Establece los valores de sus atributos y muestra la información del empleado, incluido su salario total.
+
+rendimiento (1 al 3) 1 es bueno, 3 es malo. formula : cantProyectos / rendimiento + 10USD
+
+*/
